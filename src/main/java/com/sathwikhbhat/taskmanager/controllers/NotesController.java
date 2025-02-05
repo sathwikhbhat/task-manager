@@ -1,9 +1,9 @@
-package com.example.taskmanager.controllers;
+package com.sathwikhbhat.taskmanager.controllers;
 
-import com.example.taskmanager.dto.CreateNoteDTO;
-import com.example.taskmanager.dto.CreateNoteResponseDTO;
-import com.example.taskmanager.entities.NoteEntity;
-import com.example.taskmanager.service.NotesService;
+import com.sathwikhbhat.taskmanager.dto.CreateNoteDTO;
+import com.sathwikhbhat.taskmanager.dto.CreateNoteResponseDTO;
+import com.sathwikhbhat.taskmanager.entities.NoteEntity;
+import com.sathwikhbhat.taskmanager.service.NotesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

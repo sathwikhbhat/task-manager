@@ -1,4 +1,4 @@
-package com.example.taskmanager.dto;
+package com.sathwikhbhat.taskmanager.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

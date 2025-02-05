@@ -1,4 +1,4 @@
-package com.example.taskmanager.dto;
+package com.sathwikhbhat.taskmanager.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UpdateTaskDTO {
+public class CreateTaskDTO {
+    String title;
     String description;
     String deadline;
-    Boolean completed;
 }

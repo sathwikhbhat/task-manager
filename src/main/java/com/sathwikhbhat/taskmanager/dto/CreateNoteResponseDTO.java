@@ -1,6 +1,6 @@
-package com.example.taskmanager.dto;
+package com.sathwikhbhat.taskmanager.dto;
 
-import com.example.taskmanager.entities.NoteEntity;
+import com.sathwikhbhat.taskmanager.entities.NoteEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,12 +1,12 @@
-package com.example.taskmanager.controllers;
+package com.sathwikhbhat.taskmanager.controllers;
 
-import com.example.taskmanager.dto.CreateTaskDTO;
-import com.example.taskmanager.dto.ErrorResponseDTO;
-import com.example.taskmanager.dto.TaskResponseDTO;
-import com.example.taskmanager.dto.UpdateTaskDTO;
-import com.example.taskmanager.entities.TaskEntity;
-import com.example.taskmanager.service.NotesService;
-import com.example.taskmanager.service.TaskService;
+import com.sathwikhbhat.taskmanager.dto.CreateTaskDTO;
+import com.sathwikhbhat.taskmanager.dto.ErrorResponseDTO;
+import com.sathwikhbhat.taskmanager.dto.TaskResponseDTO;
+import com.sathwikhbhat.taskmanager.dto.UpdateTaskDTO;
+import com.sathwikhbhat.taskmanager.entities.TaskEntity;
+import com.sathwikhbhat.taskmanager.service.NotesService;
+import com.sathwikhbhat.taskmanager.service.TaskService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

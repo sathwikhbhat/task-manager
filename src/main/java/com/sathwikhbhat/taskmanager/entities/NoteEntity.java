@@ -1,4 +1,4 @@
-package com.example.taskmanager.entities;
+package com.sathwikhbhat.taskmanager.entities;
 
 import lombok.Data;
 
