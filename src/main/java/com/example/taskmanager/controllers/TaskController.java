@@ -2,9 +2,12 @@ package com.example.taskmanager.controllers;
 
 import com.example.taskmanager.dto.CreateTaskDTO;
 import com.example.taskmanager.dto.ErrorResponseDTO;
+import com.example.taskmanager.dto.TaskResponseDTO;
 import com.example.taskmanager.dto.UpdateTaskDTO;
 import com.example.taskmanager.entities.TaskEntity;
+import com.example.taskmanager.service.NotesService;
 import com.example.taskmanager.service.TaskService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +19,12 @@ import java.util.List;
 @RequestMapping("/tasks")
 public class TaskController {
     private final TaskService taskService;
+    private final NotesService notesService;
+    private ModelMapper modelMapper = new ModelMapper();
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, NotesService notesService) {
         this.taskService = taskService;
+        this.notesService = notesService;
     }
 
 
@@ -29,11 +35,14 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TaskEntity> getTaskById(@PathVariable("id") Integer id) {
+    public ResponseEntity<TaskResponseDTO> getTaskById(@PathVariable("id") Integer id) {
         var task = taskService.getTaskId(id);
+        var notes = notesService.getNotesForTask(id);
         if(task == null)
             return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(task);
+        var taskResponse = new modelMapper.map(task, TaskResponseDTO.class);
+        taskResponse.setNotes(notes);
+        return ResponseEntity.ok(taskResponse);
     }
 
     @PostMapping("")
@@ -52,8 +61,9 @@ public class TaskController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDTO> handleErrors(Exception e) {
-        if(e instanceof ParseException)
-            return ResponseEntity.badRequest().body(new ErrorResponseDTO("Invalid Date Format"));
+        if (e instanceof ParseException)
+            return ResponseEntity.badRequest().body(new ErrorResponseDTO("Invalid date format"));
+        e.printStackTrace();
         return ResponseEntity.internalServerError().body(new ErrorResponseDTO("Internal Server Error"));
     }
 

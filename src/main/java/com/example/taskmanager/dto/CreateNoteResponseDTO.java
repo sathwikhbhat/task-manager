@@ -1,14 +1,18 @@
 package com.example.taskmanager.dto;
 
+import com.example.taskmanager.entities.NoteEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class ErrorResponseDTO {
-    private String error;
+public class CreateNoteResponseDTO {
+
+    private Integer taskId;
+    private NoteEntity note;
+
 }
