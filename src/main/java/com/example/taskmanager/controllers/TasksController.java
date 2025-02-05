@@ -11,18 +11,17 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.text.ParseException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
-public class TaskController {
+public class TasksController {
     private final TaskService taskService;
     private final NotesService notesService;
     private ModelMapper modelMapper = new ModelMapper();
 
-    public TaskController(TaskService taskService, NotesService notesService) {
+    public TasksController(TaskService taskService, NotesService notesService) {
         this.taskService = taskService;
         this.notesService = notesService;
     }
@@ -36,11 +35,11 @@ public class TaskController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskResponseDTO> getTaskById(@PathVariable("id") Integer id) {
-        var task = taskService.getTaskId(id);
+        var task = taskService.getTaskById(id);
         var notes = notesService.getNotesForTask(id);
         if(task == null)
             return ResponseEntity.notFound().build();
-        var taskResponse = new modelMapper.map(task, TaskResponseDTO.class);
+        var taskResponse = modelMapper.map(task, TaskResponseDTO.class);
         taskResponse.setNotes(notes);
         return ResponseEntity.ok(taskResponse);
     }

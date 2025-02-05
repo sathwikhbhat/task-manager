@@ -29,7 +29,7 @@ public class TaskService {
         return tasks;
     }
 
-    public TaskEntity getTaskId(int id) {
+    public TaskEntity getTaskById(int id) {
         for (TaskEntity task : tasks)
             if (task.getId() == id)
                 return task;
